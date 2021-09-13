@@ -45,6 +45,10 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
 
+      - name: npm install
+        id: init
+        run: npm install
+
       - name: npm audit
         run: npm audit --audit-level=moderate > dependency-check-result.txt
 
