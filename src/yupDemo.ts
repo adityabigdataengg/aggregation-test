@@ -1,4 +1,4 @@
-import * as yup from 'yup';
+import * as yup from "yup";
 
 let schema = yup.object().shape({
   name: yup.string().required(),
@@ -13,7 +13,7 @@ let schema = yup.object().shape({
 // check validity
 schema
   .isValid({
-    name: 'jimmy',
+    name: "jimmy",
     age: 24,
   })
   .then(function (valid) {
@@ -21,10 +21,12 @@ schema
   });
 
 // you can try and type cast objects to the defined schema
-console.log(schema.cast({
-  name: 'jimmy',
-  age: '24',
-  createdOn: '2014-09-23T19:25:25Z',
-}))
+console.log(
+  schema.cast({
+    name: "jimmy",
+    age: "24",
+    createdOn: "2014-09-23T19:25:25Z",
+  })
+);
 
-console.log("hi")
+console.log("hi");

@@ -16,11 +16,11 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        
+
       - name: npm install
         id: init
         run: npm install
-        
+
       - name: npm run
         id: build
         run: npm run build
@@ -32,22 +32,22 @@ jobs:
         with:
           # JFrog CLI Version
           version: 2.3.0 # optional, default is 2.3.0
-              
+
       - name: Upload artifact
         uses: actions/upload-artifact@master
         with:
-          name: my-artifact
+          name: aggregation-test
           path: dist
-          
+
   dependencyCheck:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-        
+
       - name: npm audit
         run: npm audit --audit-level=moderate > dependency-check-result.txt
-      
+
       - name: Upload dependency check results
         uses: actions/upload-artifact@master
         if: always()
