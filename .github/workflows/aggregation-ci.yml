@@ -1,0 +1,56 @@
+name: "Nodejs"
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+jobs:
+  build:
+    name: "Nodejs"
+    runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.BEAUTE_TOKEN }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        
+      - name: npm install
+        id: init
+        run: npm install
+        
+      - name: npm run
+        id: build
+        run: npm run build
+
+      - name: Setup JFrog CLI
+        # You may pin to the exact commit or the version.
+        # uses: jfrog/setup-jfrog-cli@dc5aa4f5d7180e53f0b65dfdc94155fae12a59e6
+        uses: jfrog/setup-jfrog-cli@v2.0.0
+        with:
+          # JFrog CLI Version
+          version: 2.3.0 # optional, default is 2.3.0
+              
+      - name: Upload artifact
+        uses: actions/upload-artifact@master
+        with:
+          name: my-artifact
+          path: dist
+          
+  dependencyCheck:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        
+      - name: npm audit
+        run: npm audit --audit-level=moderate > dependency-check-result.txt
+      
+      - name: Upload dependency check results
+        uses: actions/upload-artifact@master
+        if: always()
+        with:
+          name: dependency-check-result
+          path: dependency-check-result.txt
