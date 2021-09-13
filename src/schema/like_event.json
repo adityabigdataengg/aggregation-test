@@ -1,0 +1,101 @@
+{
+	"definitions": {},
+	"$schema": "http://json-schema.org/draft-07/schema#", 
+	"$id": "https://example.com/object1629821469.json", 
+	"title": "Root", 
+	"additionalProperties": false,
+	"type": "object",
+	"required": [
+		"publishedBy",
+		"eventTime",
+		"eventName",
+		"eventType",
+		"details"
+	],
+	"properties": {
+		"publishedBy": {
+			"$id": "#root/publishedBy", 
+			"title": "Publishedby", 
+			"type": "string",
+			"default": "",
+			"examples": [
+				"user-id"
+			],
+			"pattern": "^.*$"
+		},
+		"eventTime": {
+			"$id": "#root/eventTime", 
+			"title": "Eventtime", 
+			"type": "string",
+			"format": "date-time",
+			"default": "",
+			"examples": [
+				"2021-07-13T08:42:45.047Z"
+			],
+			"pattern": "^.*$"
+		},
+		"eventName": {
+			"$id": "#root/eventName", 
+			"title": "Eventname", 
+			"type": "string",
+			"default": "",
+			"examples": [
+				"interaction"
+			],
+			"pattern": "^.*$"
+		},
+		"eventType": {
+			"$id": "#root/eventType", 
+			"title": "Eventtype", 
+			"type": "string",
+			"default": "",
+			"examples": [
+				"like/unlike"
+			],
+			"pattern": "^.*$"
+		},
+		"details": {
+			"$id": "#root/details", 
+			"title": "Details", 
+			"type": "object",
+			"required": [
+				"sourceId",
+				"targetId",
+				"targetType"
+			],
+			"properties": {
+				"sourceId": {
+					"$id": "#root/details/sourceId", 
+					"title": "Sourceid", 
+					"type": "string",
+					"default": "",
+					"examples": [
+						"user-id"
+					],
+					"pattern": "^.*$"
+				},
+				"targetId": {
+					"$id": "#root/details/targetId", 
+					"title": "Targetid", 
+					"type": "string",
+					"default": "",
+					"examples": [
+						"post-id/comment-id"
+					],
+					"pattern": "^.*$"
+				},
+				"targetType": {
+					"$id": "#root/details/targetType", 
+					"title": "Targettype", 
+					"type": "string",
+					"default": "",
+					"examples": [
+						"post/comment"
+					],
+					"pattern": "^.*$"
+				}
+			}
+		}
+
+	}
+}
