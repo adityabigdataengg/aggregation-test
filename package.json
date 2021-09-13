@@ -12,5 +12,12 @@
   },
   "devDependencies": {
     "@types/redis": "^2.8.31"
+  },
+  "scripts": {
+      "jest": "jest",
+      "build": "tsc -p tsconfig.json ",
+      "watch": "node_modules/typescript/bin/tsc -w --preserveWatchOutput",
+      "fixFormat": "prettier --write .",
+      "test": "prettier --check . && tslint -c tslint.json 'src/**/*.ts' && jest && npm audit"
   }
 }
