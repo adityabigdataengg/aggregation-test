@@ -3,7 +3,6 @@
   "description": "test package",
   "version": "0.0.5",
   "dependencies": {
-    "aggregation-test": "^0.0.4",
     "ajv": "^8.6.2",
     "ajv-formats": "^2.1.1",
     "ajv-keywords": "^5.0.0",
