@@ -45,9 +45,9 @@ jobs:
         with:
           registry-url: 'https://adityadataengg.jfrog.io/artifactory/api/npm/aggregation-demo-npm/'
           # Defaults to the user or organization that owns the workflow file
-          scope: '@aditya'
+          # scope: '@aditya'
       # Publish to GitHub Packages
-        run: npm publish
+      - run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
