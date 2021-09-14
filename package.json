@@ -1,7 +1,7 @@
 {
   "name": "aggregation-test",
   "description": "test package",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "dependencies": {
     "ajv": "^8.6.2",
     "ajv-formats": "^2.1.1",
