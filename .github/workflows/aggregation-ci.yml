@@ -38,6 +38,18 @@ jobs:
         with:
           name: aggregation-test
           path: dist
+      
+      # Setup .npmrc file to publish to GitHub Packages
+      - name: Setup node to publish artifact
+        uses: actions/setup-node@v2
+        with:
+          registry-url: 'https://adityadataengg.jfrog.io/artifactory/api/npm/aggregation-demo-npm/'
+          # Defaults to the user or organization that owns the workflow file
+          scope: '@aditya'
+      # Publish to GitHub Packages
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   dependencyCheck:
     runs-on: ubuntu-latest
