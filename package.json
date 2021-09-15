@@ -22,8 +22,5 @@
     "watch": "node_modules/typescript/bin/tsc -w --preserveWatchOutput",
     "fixFormat": "prettier --write .",
     "test": "prettier --check . && tslint -c tslint.json 'src/**/*.ts' && jest && npm audit"
-  },
-  "publishConfig": {
-    "registry": "https://adityadataengg.jfrog.io/artifactory/api/npm/aggregation-demo-npm/"
   }
 }

@@ -4,7 +4,9 @@ on:
   push:
     branches:
       - main
-
+  pull_request:
+    branches:
+      - main
 jobs:
   build:
     name: "Nodejs"
@@ -22,29 +24,6 @@ jobs:
       - name: npm run
         id: build
         run: npm run build
-
-      # - name: Setup JFrog CLI
-      #   # You may pin to the exact commit or the version.
-      #   # uses: jfrog/setup-jfrog-cli@dc5aa4f5d7180e53f0b65dfdc94155fae12a59e6
-      #   uses: jfrog/setup-jfrog-cli@v2.0.0
-      #   with:
-      #     # JFrog CLI Version
-      #     version: 2.3.0 # optional, default is 2.3.0
-
-      # - name: Upload artifact
-      #   uses: actions/upload-artifact@master
-      #   with:
-      #     name: aggregation-test
-      #     path: dist
-      
-      # Setup .npmrc file to publish to GitHub Packages
-      - name: Setup node to publish artifact
-        uses: actions/setup-node@v2
-        with:
-          registry-url: 'https://adityadataengg.jfrog.io/artifactory/api/npm/aggregation-demo-npm/'
-      - run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
   dependencyCheck:
     runs-on: ubuntu-latest
